@@ -1,0 +1,9 @@
+package: github.com/JILeXanDR/bot-platform
+import:
+- package: github.com/labstack/echo
+- package: github.com/dgrijalva/jwt-go
+  version: ^3.2.0
+- package: go.mongodb.org/mongo-driver
+  version: ^1.0.0-rc2
+  subpackages:
+  - mongo
