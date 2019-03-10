@@ -7,3 +7,5 @@ import:
   version: ^1.0.0-rc2
   subpackages:
   - mongo
+- package: gopkg.in/go-playground/validator.v9
+  version: ^9.27.0

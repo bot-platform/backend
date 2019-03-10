@@ -13,24 +13,31 @@ func main() {
 
 	e := echo.New()
 
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
-	e.Use(middleware.CORS())
+	e.Validator = NewCustomValidator()
 
-	api := e.Group("/api")
+	e.Use(middleware.Logger())
+	//e.Use(middleware.Recover())
+	e.Use(middleware.CORS())
 
 	db, err := NewMongoDb(cfg.DbHost)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	repo := NewRepository(db, cfg.DbName)
+	apiHandlers := NewAPI(NewRepository(db, cfg.DbName))
 
-	apiHandlers := NewAPI(repo)
+	jwtMiddleware := middleware.JWT(cfg.JWTSecret)
 
-	api.GET("/bots", apiHandlers.getBots)
+	api := e.Group("/api")
+
+	api.POST("/login", apiHandlers.login)
+	api.POST("/register", apiHandlers.register)
+
+	api.GET("/bots", apiHandlers.getBots, jwtMiddleware)
+	api.POST("/bots", apiHandlers.addBot, jwtMiddleware)
+	api.DELETE("/bots/:id", apiHandlers.deleteBot, jwtMiddleware)
 	api.GET("/tournaments", apiHandlers.getTournaments)
-	api.POST("/teams", apiHandlers.createTeam)
+	api.POST("/teams", apiHandlers.createTeam, jwtMiddleware)
 
 	e.Logger.Fatal(e.Start(":" + strconv.Itoa(cfg.Port)))
 }

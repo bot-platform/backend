@@ -19,3 +19,9 @@ type Team struct {
 	ID   primitive.ObjectID `json:"id" bson:"_id"`
 	Name string             `json:"name" bson:"name"`
 }
+
+type User struct {
+	ID       primitive.ObjectID `json:"id" bson:"_id"`
+	Login    string             `json:"login"`
+	Password string             `json:"-"`
+}
