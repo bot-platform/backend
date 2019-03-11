@@ -9,3 +9,5 @@ import:
   - mongo
 - package: gopkg.in/go-playground/validator.v9
   version: ^9.27.0
+- package: github.com/gorilla/websocket
+  version: ^1.4.0

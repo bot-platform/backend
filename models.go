@@ -25,3 +25,19 @@ type User struct {
 	Login    string             `json:"login"`
 	Password string             `json:"-"`
 }
+
+type Player struct {
+	ID primitive.ObjectID `json:"id" bson:"_id"`
+}
+
+type Game struct {
+	ID primitive.ObjectID `json:"id" bson:"_id"`
+}
+
+type Goal struct {
+	ID          primitive.ObjectID `json:"id" bson:"_id"`
+	Key         string             `json:"key"`
+	Name        string             `json:"name"`
+	Description string             `json:"description"`
+	Score       int                `json:"score"`
+}

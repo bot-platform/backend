@@ -39,5 +39,15 @@ func main() {
 	api.GET("/tournaments", apiHandlers.getTournaments)
 	api.POST("/teams", apiHandlers.createTeam, jwtMiddleware)
 
+	ws := NewWebSocket()
+
+	//ws.OnConnection = func(socket *Socket) {
+	//	socket.On("ping", func(payload interface{}) {
+	//		socket.Emit("ping_result", "pong")
+	//	})
+	//}
+
+	e.GET("/io", ws.Handler)
+
 	e.Logger.Fatal(e.Start(":" + strconv.Itoa(cfg.Port)))
 }

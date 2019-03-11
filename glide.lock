@@ -1,5 +1,5 @@
-hash: 63896df1fc576dcfe486698b65e59e5eb6240bb9881b836a3b224cf950a0a904
-updated: 2019-03-10T09:58:55.117327228+02:00
+hash: 38d5e80beef7e06172f71f0744b50a0d45956c4cccbddf658689860621ef7d07
+updated: 2019-03-11T21:39:34.634081797+02:00
 imports:
 - name: github.com/dgrijalva/jwt-go
   version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
@@ -13,6 +13,8 @@ imports:
   version: 2fee6af1a9795aafbe0253a0cfbdf668e1fb8a9a
 - name: github.com/golang/snappy
   version: 2a8bb927dd31d8daada140a5d09578521ce5c36a
+- name: github.com/gorilla/websocket
+  version: 66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d
 - name: github.com/labstack/echo
   version: 38772c686c76b501f94bd6cd5b77f5842e93b559
   subpackages:
@@ -78,6 +80,8 @@ imports:
   subpackages:
   - acme
   - acme/autocert
+  - bcrypt
+  - blowfish
   - pbkdf2
 - name: golang.org/x/sync
   version: e225da77a7e68af35c70ccbf71af2b83e6acac3c
